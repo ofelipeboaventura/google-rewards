@@ -1,34 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function VSLBlackKim() {
-  const [playerFailed, setPlayerFailed] = useState(false);
-
   useEffect(() => {
-    const handleRejectedFetch = (event: PromiseRejectionEvent) => {
-      const reason = event.reason;
-      const message = String(reason?.message || reason || "");
-      const stack = String(reason?.stack || "");
-      const isPlayerFailure =
-        message.includes("Failed to fetch") &&
-        (stack.includes("scripts.converteai.net") || stack.includes("smartplayer.js"));
-
-      if (isPlayerFailure) {
-        event.preventDefault();
-        setPlayerFailed(true);
-      }
-    };
-
-    window.addEventListener("unhandledrejection", handleRejectedFetch);
-
     const loadPlayerScript = () => {
       if (document.querySelector('script[src*="68a77525bbcb512da47ca857"]')) return;
       const script = document.createElement("script");
       script.src = "https://scripts.converteai.net/51bb56e8-38bf-4e58-87dd-2429e902a5b3/players/68a77525bbcb512da47ca857/v4/player.js";
       script.async = true;
+      script.onload = () => {
+        console.log("Player script loaded successfully");
+      };
       script.onerror = () => {
-        setPlayerFailed(true);
+        console.error("Failed to load player script");
       };
       document.head.appendChild(script);
     };
@@ -36,21 +19,12 @@ export default function VSLBlackKim() {
     loadPlayerScript();
 
     return () => {
-      window.removeEventListener("unhandledrejection", handleRejectedFetch);
       const existingScript = document.querySelector('script[src*="68a77525bbcb512da47ca857"]');
       if (existingScript) {
         existingScript.remove();
       };
     };
   }, []);
-
-  if (playerFailed) {
-    return (
-      <div className="w-full rounded-2xl border border-red-200 bg-red-50 px-4 py-6 text-sm text-red-700">
-        Video temporarily unavailable. Please refresh the page and try again.
-      </div>
-    );
-  }
 
   return (
     // @ts-expect-error - Player script is not defined in the global scope

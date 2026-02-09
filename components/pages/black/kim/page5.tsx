@@ -66,7 +66,7 @@ export default function Page({
 
   return (
     <>
-      <div className="appear w-full bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-5 sm:p-6 text-center border border-gray-100 relative overflow-hidden mb-6">
+      <div className="appear w-full max-w-md bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-5 sm:p-6 text-center border border-gray-100 relative overflow-hidden mb-6">
         <div className="flex items-center justify-center gap-2 mb-4">
           <div className="bg-red-50 text-red-600 p-1.5 rounded-full">
             <Lock size={14} strokeWidth={2.5} />
@@ -107,6 +107,11 @@ export default function Page({
           </a>
         )}
       </div>
+      {!visible && (
+        <div className="text-sm text-center p-2">
+          🔊 Check if your sound is turned on
+        </div>
+      )}
       <Comments />
     </>
   );
