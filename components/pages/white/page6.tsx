@@ -26,11 +26,10 @@ export default function Page6({
           Click on the button below and see the withdrawal guide! 👇
         </div>
       </div>
-      <Button onClick={() => setPage(page + 1)} className="!bg-green-600 !border-green-700 hover:!bg-green-500">
+      <Button onClick={() => setPage(page + 0)} className="!bg-green-600 !border-green-700 hover:!bg-green-500">
         <CirclePlay /> Yes, withdraw my balance now!
       </Button>
       <ConfettiEffect />
     </>
   );
-
 };
