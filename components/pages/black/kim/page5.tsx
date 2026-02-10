@@ -84,6 +84,9 @@ export default function Page({
           to your account immediately.
         </p>
         <VSL />
+        <div className="text-sm text-center p-1">
+          🔊 Check if your sound is turned on
+        </div>
         <div className="mt-6 rounded-2xl border border-[#d6dbe3] bg-[#f6f7f9] px-6 py-5">
           <p className="text-[15px] leading-relaxed text-[#4f627d]">
             <strong className="text-[#1a2942]">Important:</strong> Thousands of users have already withdrawn.
@@ -105,13 +108,9 @@ export default function Page({
               <span>I WANNA PAY THE FEE!</span>
             </Button>
           </a>
+          
         )}
       </div>
-      {!visible && (
-        <div className="text-sm text-center p-2">
-          🔊 Check if your sound is turned on
-        </div>
-      )}
       <Comments />
     </>
   );
