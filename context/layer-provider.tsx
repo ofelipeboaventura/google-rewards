@@ -30,8 +30,8 @@ export function LayerProvider({
 }: LayerProviderProps) {
 
   // SET LINKS
-  const frontLink = 'https://pay.kiwify.com/jJS2yjQ';
-  const promoLink = 'https://pay.kiwify.com/eypKs53';
+  const frontLink = 'https://go.centerpag.com/PPU38CQ7FAO';
+  const promoLink = 'https://go.centerpag.com/PPU38CQ7FP9';
 
   const contextValue = {
     host,
